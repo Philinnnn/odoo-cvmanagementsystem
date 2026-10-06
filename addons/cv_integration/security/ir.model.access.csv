@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cv_position,cv_position,model_cv_integration_position,base.group_user,1,1,1,1
+access_cv_position_attribute,cv_position_attribute,model_cv_integration_position_attribute,base.group_user,1,1,1,1

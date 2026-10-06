@@ -1,0 +1,52 @@
+<odoo>
+    <record id="view_cv_position_form" model="ir.ui.view">
+        <field name="name">cv_integration.position.form</field>
+        <field name="model">cv_integration.position</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_import" type="object" string="Import from CV Management System" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="api_base_url" placeholder="https://cvmanagementsystem-production.up.railway.app"/>
+                        <field name="api_token"/>
+                        <field name="imported_at" readonly="1"/>
+                    </group>
+                <notebook>
+                    <page string="Attributes">
+                        <field name="attribute_ids" readonly="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="data_type"/>
+                                <field name="summary"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cv_position_list" model="ir.ui.view">
+        <field name="name">cv_integration.position.list</field>
+        <field name="model">cv_integration.position</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="imported_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_cv_position" model="ir.actions.act_window">
+        <field name="name">CV Positions</field>
+        <field name="res_model">cv_integration.position</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_cv_integration_root" name="CV Integration" sequence="100"/>
+    <menuitem id="menu_cv_position" name="Positions" parent="menu_cv_integration_root" action="action_cv_position"/>
+</odoo>
